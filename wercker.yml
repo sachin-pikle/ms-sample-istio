@@ -1,4 +1,4 @@
-box: ubuntu
+box: combient/java-mvn
 
 deploy:
   #box:
