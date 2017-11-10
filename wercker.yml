@@ -1,7 +1,9 @@
+box: combient/java-mvn
+
 deploy:
-  box:
-        id: alpine
-        cmd: /bin/sh
+  #box:
+        #id: alpine
+        #cmd: /bin/sh
 
   steps:        
     #- kubectl:
