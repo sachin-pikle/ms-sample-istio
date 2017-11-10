@@ -24,10 +24,10 @@ deploy:
         sudo chmod +x ./kubectl
         
     - script:
-      name: Install kubectl
+      name: Install istio
       code: |
         echo "Installing istio"
-        curl -LO https://github.com/istio/istio/releases/download/0.2.7/istio-0.2.7-linux.tar.gz istio-0.2.7-linux.tar.gz | tar xvz
+        curl -LO istio-0.2.7-linux.tar.gz https://github.com/istio/istio/releases/download/0.2.7/istio-0.2.7-linux.tar.gz | tar xvz
         cd istio-0.2.7
         export PATH=$PWD/bin:$PATH
         
