@@ -10,4 +10,3 @@ deploy:
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
         command: kubectl apply -f <(istioctl kube-inject -f bookinfo.yaml)
-        
