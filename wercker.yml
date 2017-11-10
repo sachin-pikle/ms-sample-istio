@@ -1,4 +1,4 @@
-deploy-to-cluster:
+deploy:
   box:
         id: alpine
         cmd: /bin/sh
