@@ -27,7 +27,7 @@ deploy:
       name: Install kubectl
       code: |
         echo "Installing istio"
-        curl -L https://git.io/getLatestIstio | sh -
+        curl -L https://github.com/istio/istio/releases/download/0.2.7/istio-0.2.7-linux.tar.gz
         cd istio-0.2.7
         export PATH=$PWD/bin:$PATH
         
