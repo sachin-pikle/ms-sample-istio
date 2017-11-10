@@ -35,4 +35,4 @@ deploy:
       name: Deploy the bookinfo app with istio sidecar injection
       code: |
         echo "Deploy the bookinfo app with istio sidecar injection"
-        kubectl apply -f <(istioctl kube-inject -f bookinfo.yaml)
+        ./kubectl apply -f <(istioctl kube-inject -f bookinfo.yaml)
