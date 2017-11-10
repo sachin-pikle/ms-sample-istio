@@ -4,8 +4,6 @@ deploy:
         cmd: /bin/sh
 
   steps:        
-    - shellcheck
-
     #- kubectl:
     #    name: create deployment
     #    server: $KUBERNETES_MASTER
@@ -25,15 +23,3 @@ deploy:
       code: |
         echo "Deploy the bookinfo app with istio sidecar injection"
         kubectl apply -f <(istioctl kube-inject -f bookinfo.yaml)
-
-    #- script:
-      #name: "Wait for service LB to be provisioned and assigned an external IP"
-      #code: |
-        #CONTAINER_HOST=
-        #echo 'Before until loop ... Container host=' $CONTAINER_HOST
-        #while [[ -z "$CONTAINER_HOST" ]]; do
-          #CONTAINER_HOST=$(./kubectl --server=$KUBERNETES_MASTER --token=$KUBERNETES_TOKEN --insecure-skip-tls-verify=true get service rest-inventory -o jsonpath={.status.loadBalancer.ingress[0].ip})
-          #echo 'Sleeping for 20 sec .. Container host=' $CONTAINER_HOST
-          #sleep 20
-        #done
-         
