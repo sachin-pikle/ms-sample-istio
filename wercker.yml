@@ -21,7 +21,7 @@ deploy:
       code: |
         echo "Installing version $KUBERNETES_VERSION of kubernetes"
         curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-        $chmod +750 ./kubectl
+        sudo chmod +750 ./kubectl
 
     - script:
       name: Deploy the bookinfo app with istio sidecar injection
