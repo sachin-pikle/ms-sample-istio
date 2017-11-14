@@ -6,33 +6,33 @@ deploy:
         #cmd: /bin/sh
 
   steps:        
-    #- kubectl:
-    #    name: create deployment
-    #    server: $KUBERNETES_MASTER
-    #    token: $KUBERNETES_TOKEN
-    #    insecure-skip-tls-verify: true
-    #    command: apply -f <(istioctl kube-inject -f bookinfo.yaml)
+    - kubectl:
+        name: create deployment
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        command: apply -f <(istioctl kube-inject -f bookinfo.yaml)
 
     # Register Inventory REST service in APIP
-    - shellcheck
+    #- shellcheck
     
-    - script:
-      name: Install kubectl
-      code: |
-        echo "Installing version $KUBERNETES_VERSION of kubernetes"
-        curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-        sudo chmod +x ./kubectl
+    #- script:
+    #  name: Install kubectl
+    #  code: |
+    #    echo "Installing version $KUBERNETES_VERSION of kubernetes"
+    #    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+    #    sudo chmod +x ./kubectl
         
-    - script:
-      name: Install istio
-      code: |
-        echo "Installing istio"
-        curl -LO istio-0.2.7-linux.tar.gz https://github.com/istio/istio/releases/download/0.2.7/istio-0.2.7-linux.tar.gz | tar xvz
-        cd istio-0.2.7
-        export PATH=$PWD/bin:$PATH
+    #- script:
+    #  name: Install istio
+    #  code: |
+    #    echo "Installing istio"
+    #    curl -LO istio-0.2.7-linux.tar.gz https://github.com/istio/istio/releases/download/0.2.7/istio-0.2.7-linux.tar.gz | tar xvz
+    #    cd istio-0.2.7
+    #    export PATH=$PWD/bin:$PATH
         
-    - script:
-      name: Deploy the bookinfo app with istio sidecar injection
-      code: |
-        echo "Deploy the bookinfo app with istio sidecar injection"
-        ./kubectl --server=$KUBERNETES_MASTER --token=$KUBERNETES_TOKEN --insecure-skip-tls-verify=true apply -f <(istioctl kube-inject -f bookinfo.yaml)
+    #- script:
+    #  name: Deploy the bookinfo app with istio sidecar injection
+    #  code: |
+    #    echo "Deploy the bookinfo app with istio sidecar injection"
+    #    ./kubectl --server=$KUBERNETES_MASTER --token=$KUBERNETES_TOKEN --insecure-skip-tls-verify=true apply -f <(istioctl kube-inject -f bookinfo.yaml)
