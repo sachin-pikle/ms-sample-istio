@@ -11,6 +11,13 @@ deploy:
         server: $KUBERNETES_MASTER
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
+        command: get no
+
+    - kubectl:
+        name: create deployment
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
         command: apply -f <(istioctl kube-inject -f bookinfo.yaml)
 
     # Register Inventory REST service in APIP
