@@ -15,7 +15,7 @@ deploy:
                  # apply -f <(istioctl kube-inject -f bookinfo.yaml)
 
     # Register Inventory REST service in APIP
-    #- shellcheck
+    - shellcheck
     
     #- script:
     #  name: Install kubectl
@@ -24,11 +24,13 @@ deploy:
     #    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
     #    sudo chmod +x ./kubectl
         
-    #- script:
-    #  name: Install istio
-    #  code: |
-    #    echo "Installing istio"
-    #    curl -LO istio-0.2.7-linux.tar.gz https://github.com/istio/istio/releases/download/0.2.7/istio-0.2.7-linux.tar.gz | tar xvz
+    - script:
+      name: Install istioctl
+      code: |
+        echo "Installing istioctl"
+        curl -L --compressed https://github.com/istio/istio/releases/download/0.2.7/istio-0.2.7-linux.tar.gz | tar -xz -C $PWD && export PATH=${PWD}/istio-0.2.7/bin:$PATH
+        pwd
+        ls
     #    cd istio-0.2.7
     #    export PATH=$PWD/bin:$PATH
         
