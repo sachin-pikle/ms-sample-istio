@@ -1,9 +1,9 @@
 box: ubuntu
 
 deploy:
-  #box:
-        #id: alpine
-        #cmd: /bin/sh
+  box:
+        id: alpine
+        cmd: /bin/sh
 
   steps:        
     # Register Inventory REST service in APIP
