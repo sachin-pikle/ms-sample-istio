@@ -16,6 +16,13 @@ deploy:
     #    curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
     #    sudo chmod +x ./kubectl
         
+    - kubectl:
+        name: kubectl version
+        server: $KUBERNETES_MASTER
+        token: $KUBERNETES_TOKEN
+        insecure-skip-tls-verify: true
+        command: version
+
     - script:
       name: Install istioctl
       code: |
