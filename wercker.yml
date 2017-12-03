@@ -1,5 +1,4 @@
-#box: combient/java-mvn 
-box: alpine
+box: combient/java-mvn 
 
 deploy:
   #box:
