@@ -1,9 +1,9 @@
-box: combient/java-mvn
+#box: combient/java-mvn
 
 deploy:
-  #box:
-        #id: alpine
-        #cmd: /bin/sh
+  box:
+        id: alpine
+        cmd: /bin/sh
 
   steps:        
     # Register Inventory REST service in APIP
@@ -26,10 +26,10 @@ deploy:
     - script:
       name: Install istioctl
       code: |
+        pwd
         echo "Installing istioctl"
         curl -L --compressed https://github.com/istio/istio/releases/download/0.2.7/istio-0.2.7-linux.tar.gz | tar -xz -C $PWD && export PATH=${PWD}/istio-0.2.7/bin:$PATH
         pwd
-        ls
 
     - script:
       name: Check istioctl version
