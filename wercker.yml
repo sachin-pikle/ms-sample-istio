@@ -42,7 +42,8 @@ deploy:
         server: $KUBERNETES_MASTER
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
-        command: apply -f <(istioctl kube-inject -f bookinfo.yaml)
+        command: version
+        #apply -f <(istioctl kube-inject -f bookinfo.yaml)
 
     #- script:
     #  name: Deploy the bookinfo app with istio sidecar injection
