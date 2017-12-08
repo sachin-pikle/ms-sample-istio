@@ -37,6 +37,31 @@ deploy:
         echo "Checking istioctl version"
         istioctl version
         
+    - script:
+      name: generate and save kubeconfig
+      code: |
+        mkdir -p /root/.kube
+        echo "
+        apiVersion: v1
+        kind: Config
+        preferences: {}
+        clusters:
+          - cluster:
+              insecure-skip-tls-verify: true
+              server: ${KUBERNETES_MASTER}
+            name: sachin
+        contexts:
+          - context:
+              cluster: sachin
+              user: sachin
+            name: sachin
+        current-context: sachin
+        users:
+          - name: sachin
+            user:
+              token: ${KUBERNETES_TOKEN}
+        " > /root/.kube/config
+
     - kubectl:
         name: create deployment
         server: $KUBERNETES_MASTER
