@@ -42,7 +42,7 @@ deploy:
         server: $KUBERNETES_MASTER
         token: $KUBERNETES_TOKEN
         insecure-skip-tls-verify: true
-        command: istioctl kube-inject -f bookinfo.yaml
+        command: apply -f <(istioctl kube-inject -f bookinfo.yaml)
         #apply -f bookinfo.yaml
         #apply -f <(istioctl kube-inject -f bookinfo.yaml)
 
