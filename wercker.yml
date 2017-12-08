@@ -40,9 +40,27 @@ deploy:
     - script:
       name: debug istio
       code: |
-        istioctl --help
-        istioctl kube-inject -f bookinfo.yaml
-        exit 1
+        mkdir -p /root/.kube
+        echo "
+        apiVersion: v1
+        kind: Config
+        preferences: {}
+        clusters:
+          - cluster:
+              insecure-skip-tls-verify: true
+              server: ${KUBERNETES_MASTER}
+            name: sachin
+        contexts:
+          - context:
+              cluster: sachin
+              user: sachin
+            name: sachin
+        current-context: sachin
+        users:
+          - name: sachin
+            user:
+              token: ${KUBERNETES_TOKEN}
+        " > /root/.kube/config
 
     - kubectl:
         name: create deployment
