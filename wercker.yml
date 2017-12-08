@@ -37,6 +37,12 @@ deploy:
         echo "Checking istioctl version"
         istioctl version
         
+    - script:
+      name: debug istio
+      code: |
+        istioctl kube-inject -f bookinfo.yaml
+        exit 1
+
     - kubectl:
         name: create deployment
         server: $KUBERNETES_MASTER
