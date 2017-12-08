@@ -40,8 +40,7 @@ deploy:
     - script:
       name: debug istio
       code: |
-        mkdir -p /root/.kube/
-        touch /root/.kube/config
+        istioctl --help
         istioctl kube-inject -f bookinfo.yaml
         exit 1
 
